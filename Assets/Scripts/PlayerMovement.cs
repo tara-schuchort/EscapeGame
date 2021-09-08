@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Print Start as Debug Log
-        Debug.Log("Start");
-    }
+    public CharacterController charController;
 
+    public float speed = 12f;
+        
     // Update is called once per frame
     void Update()
     {
-        // Print Update as Debug Log
-        Debug.Log("Update");
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        // new Vector3(x, 0f, z) would be global and moves in same direction no matter where u face therefore:
+        Vector3 move = transform.right * x + transform.forward * z;
+        
+        // dont move along z axis
+        Vector3 pos = this.transform.position;
+        pos.z = 0;
+        this.transform.position = pos;
+
+        charController.Move(move * speed * Time.deltaTime);
     }
 }
