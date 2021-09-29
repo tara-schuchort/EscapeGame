@@ -1,35 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using Vector3 = UnityEngine.Vector3;
 
-
-public class EnemyController : MonoBehaviour
+public class Ghost : MonoBehaviour
 {
-    float lookRange = 10f;
+
+    private float lookRange = 10f;
+
+    public UnityEngine.AI.NavMeshAgent agent;  //is attached to a mobile character in the game to allow it to navigate the Scene
     
-    public NavMeshAgent agent;  //is attached to a mobile character in the game to allow it to navigate the Scene
-    private  Transform target;
+    private Transform target;
     private PlayerController playerInst;
-    
+
     // Start is called before the first frame update
     void Start()
     {
+
         playerInst = PlayerController.Instance;
-        agent = GetComponent<NavMeshAgent>();
         target = playerInst.transform;
+
+
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        Chasing(target);
+    }
 
-        //get distance btw enemy and player at given time
-        float distance = Vector3.Distance(target.position, transform.position);
 
-        
+    public void Chasing(Transform target)
+    {
+
+
+        Debug.Log(target.position);
+        Debug.Log(this.transform.position);
+
+        var distance = Vector3.Distance(target.position,this.transform.position);
+
         // if enemy can see the player, start chase
         if (distance <= lookRange)
         {
@@ -37,13 +48,13 @@ public class EnemyController : MonoBehaviour
             if (distance <= agent.stoppingDistance)
             {
                 //attack the target
-                
+
                 FaceTarget();
             }
         }
     }
 
-    void FaceTarget()
+    public void FaceTarget()
     {
         // get direction where to face
         Vector3 direction = (target.position - transform.position).normalized;
@@ -52,4 +63,6 @@ public class EnemyController : MonoBehaviour
         // update own position
         transform.rotation = lookRotation;  // could smooth this with Quaternion.Slerp(transform.rotation, lookRotation, time.deltaTime * 5f);
     }
+
+
 }
