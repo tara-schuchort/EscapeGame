@@ -4,20 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-
-
-    public static PlayerController Instance;
-
-
-    #region Singleton
-    void Awake()
-    {
-        Instance = this;
-    }
-    #endregion
-
-
     CharacterController _charController;
     // variables according to motion (movement speed of the player, falling velocity if not grounded and gravity)
     public float movSpeed = 12f;
@@ -32,7 +18,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // if shift is pressed, player can sprint
         if (Input.GetKey("left shift") && _charController.isGrounded)
             movSpeed = 20f;

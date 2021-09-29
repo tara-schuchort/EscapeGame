@@ -10,26 +10,22 @@ public class EnemyController : MonoBehaviour
     float lookRange = 10f;
     
     public NavMeshAgent agent;  //is attached to a mobile character in the game to allow it to navigate the Scene
-    private  Transform target;
-    private PlayerController playerInst;
+    public Transform target;
+    private PlayerManager playerInst;
     
     // Start is called before the first frame update
     void Start()
     {
-        playerInst = PlayerController.Instance;
+        playerInst = PlayerManager.Instance;
         agent = GetComponent<NavMeshAgent>();
-        target = playerInst.transform;
+        target = playerInst.player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         //get distance btw enemy and player at given time
         float distance = Vector3.Distance(target.position, transform.position);
-
-        
         // if enemy can see the player, start chase
         if (distance <= lookRange)
         {

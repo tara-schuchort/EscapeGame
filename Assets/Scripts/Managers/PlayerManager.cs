@@ -5,20 +5,15 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    /*
-
-    public GameObject player { get; private set; }
+    #region Singleton
 
     public static PlayerManager Instance;
 
-
-    #region Singleton
     void Awake()
     {
         Instance = this;
-        player = new GameObject();
     }
     #endregion
-    */
 
+    public GameObject player;
 }
