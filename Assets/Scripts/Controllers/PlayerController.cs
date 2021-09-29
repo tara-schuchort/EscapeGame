@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if shift is pressed, player can sprint
+        if (Input.GetKey("left shift") && _charController.isGrounded)
+            movSpeed = 20f;
+
         float horizontalMov = Input.GetAxis("Horizontal") * movSpeed; //x
         float verticalMov = Input.GetAxis("Vertical") * movSpeed; //z
 
