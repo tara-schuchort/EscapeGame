@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     CharacterController _charController;
     // variables according to motion (movement speed of the player, falling velocity if not grounded and gravity)

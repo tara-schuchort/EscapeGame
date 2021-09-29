@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Vector3 = UnityEngine.Vector3;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;  //is attached to a mobile character in the game to allow it to navigate the Scene
     public Transform player;
