@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private int garlic;
     private bool demon_defeated;
     
+    //[SerializeField] private GameObject _slidingDoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
         sliding_door_key = false;
         garlic = 0;
         demon_defeated = false;
+        //_slidingDoor.GetComponent<SlidingDoor>().OpenDoor();
     }
 
     // Update is called once per frame
