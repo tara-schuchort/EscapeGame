@@ -10,14 +10,24 @@ public class PlayerController : MonoBehaviour
     public float gravity = 9.8f;
     public float velocity = 0f;
 
+    private KeyController keyInst;
+
+
     void Start()
     {
+
+        keyInst = KeyController.Instance;
+
         _charController = GetComponent<CharacterController>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        takeKey();
+
         // if shift is pressed, player can sprint
         if (Input.GetKey("left shift") && _charController.isGrounded)
             movSpeed = 20f;
@@ -38,4 +48,17 @@ public class PlayerController : MonoBehaviour
             _charController.Move(new Vector3(0, velocity, 0));
         }
     }
+
+
+
+    private void takeKey()
+    {
+         if ((Input.GetKeyDown(KeyCode.E)))
+       // if ()
+        {
+            keyInst.taken = true;
+
+        }
+    }
+
 }
