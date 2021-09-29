@@ -7,11 +7,11 @@ public class PlayerManager : MonoBehaviour
 {
     #region Singleton
 
-    public static PlayerManager instance;
+    public static PlayerManager Instance;
 
-    private void Awake()
+    void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     #endregion
 
